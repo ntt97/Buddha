@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "504140220263",
+    "firebase_url": "https://buddha-28b4c.firebaseio.com",
+    "project_id": "buddha-28b4c",
+    "storage_bucket": "buddha-28b4c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:504140220263:android:11cf443d226cfd9e",
+        "android_client_info": {
+          "package_name": "com.buddha"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "504140220263-6v34kgckdndi7816mu2barg42s5k5uup.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHP450opECSyb-9R_j0VMVwHDNHctP1Ks"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "504140220263-6v34kgckdndi7816mu2barg42s5k5uup.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

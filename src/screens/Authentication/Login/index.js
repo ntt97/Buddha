@@ -7,15 +7,19 @@ import {
  
 import {Logo, FormLogin, Button, SignupSection} from '../../../components'
 
+
  export default class Login extends Component{
-     
+     _onPress =()=>{
+         this.props.navigation.navigate("Main")
+         console.log("Hellow")
+     }
      render(){
          return(
             <ImageBackground source ={bg} style ={styles.wrapper}>
                 <Logo />
-                <FormLogin />
-                <Button />
-                <SignupSection />
+                <FormLogin />  
+                <Button children="Login" onPress = {this._onPress} />
+                <SignupSection navigation= {this.props.navigation}/>
                
             </ImageBackground>
          )

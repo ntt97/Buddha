@@ -36,6 +36,7 @@ export default class Button extends Component {
       this.setState({ isLoading: false });
       this.buttonAnimated.setValue(0);
       this.growAnimated.setValue(0);
+      this.props.onPress();
     }, 2300);
   };
   _onGrow() {
@@ -44,6 +45,8 @@ export default class Button extends Component {
       duration: 200,
       easing: Easing.linear
     }).start();
+    
+
   }
 
   render() {
@@ -58,9 +61,9 @@ export default class Button extends Component {
     return (
       <View style={styles.container}>
         <Animated.View style={{ width: changeWidth }}>
-        <Animated.View
+          <Animated.View
             style={[styles.circle, { transform: [{ scale: changeScale }] }]}
-          />   
+          />
           <TouchableOpacity
             style={styles.button}
             onPress={this._onPress}
@@ -69,10 +72,9 @@ export default class Button extends Component {
             {this.state.isLoading ? (
               <Image source={spinner} style={styles.image} />
             ) : (
-              <Text style={styles.text}>LOGIN</Text>
+              <Text style={styles.text}>{this.props.children}</Text>
             )}
           </TouchableOpacity>
-          
         </Animated.View>
       </View>
     );
@@ -80,10 +82,9 @@ export default class Button extends Component {
 }
 const styles = StyleSheet.create({
   container: {
-    flex: 1,    
+    flex: 1,
     alignItems: "center",
-    justifyContent: "flex-start",
-    
+    justifyContent: "flex-start"
   },
   button: {
     alignItems: "center",
@@ -91,10 +92,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#f035E0",
     height: MARGIN,
     borderRadius: 20,
-    zIndex: 100,
-    
-   
-    
+    zIndex: 100
   },
   image: {
     width: 24,
@@ -105,7 +103,7 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent" // No color
   },
   circle: {
-    top:40,
+    top: 40,
     height: MARGIN,
     width: MARGIN,
     marginTop: -MARGIN,
@@ -114,7 +112,6 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     alignSelf: "center",
     zIndex: 99,
-    backgroundColor: "#F035E0",
-    
+    backgroundColor: "#F035E0"
   }
 });

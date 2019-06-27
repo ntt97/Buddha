@@ -6,7 +6,7 @@ export default class AuthLoading extends Component{
     componentDidMount = async() =>{
         const {navigation} = this.props
         // get token from localStorage
-        const token = await AsyncStorage.getItem(storageKey.token)
+        const token =null //await AsyncStorage.getItem(storageKey.token)
         //check token in storage
         if(token && token !==null){
             //if exits --> Main

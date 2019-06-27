@@ -7,6 +7,7 @@ export default class Input extends Component {
 
     _onChange = (e) =>{
         this.props.onChange(e)
+       
     }
   render() {
       const {source,placeholder,secureTextEntry,autoCorrect,autoCapitalize,returnKeyType,isPassword}= this.props
@@ -14,7 +15,7 @@ export default class Input extends Component {
       <View style={styles.inputWrapper}>
         <Image source={source} style={styles.inlineImg} />
         <TextInput
-          onChange = {e=>this._onChange(e)}  
+          onChangeText = {e=>this._onChange(e)}  
           style={styles.input}
           placeholder={placeholder}
           secureTextEntry={secureTextEntry}

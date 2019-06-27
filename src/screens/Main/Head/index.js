@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { 
-    View,Text
+    View,
+    Text
  } from 'react-native';
  export default class Head extends Component{
      render(){

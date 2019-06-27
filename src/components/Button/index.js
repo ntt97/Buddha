@@ -58,14 +58,15 @@ export default class Button extends Component {
       inputRange: [0, 1],
       outputRange: [1, MARGIN]
     });
+    const {btnStyle} = this.props
     return (
       <View style={styles.container}>
         <Animated.View style={{ width: changeWidth }}>
           <Animated.View
             style={[styles.circle, { transform: [{ scale: changeScale }] }]}
           />
-          <TouchableOpacity
-            style={styles.button}
+          <TouchableOpacity           
+            style={[styles.button,btnStyle]}
             onPress={this._onPress}
             activeOpacity={1}
           >

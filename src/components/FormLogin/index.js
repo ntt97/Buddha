@@ -10,9 +10,8 @@ export default class Form extends Component {
     super(props);
     this.state = {
       showPass: true,
-      press: false,
-      username: "",
-      password: ""
+      press: false
+     
     };
   }
 
@@ -31,7 +30,7 @@ export default class Form extends Component {
       >
         <View style={styles.container}>
           <Input
-            onChange={username => this.setState({ username })}
+            onChange={this.props.onChangeUser}
             source={usernameImg}
             placeholder="Username"
             autoCapitalize={"none"}
@@ -39,7 +38,7 @@ export default class Form extends Component {
             autoCorrect={false}
           />
           <Input
-            onChange={password => this.setState({ password })}
+            onChange={this.props.onChangePass}
             source={passwordImg}
             secureTextEntry={this.state.showPass}
             placeholder="Password"

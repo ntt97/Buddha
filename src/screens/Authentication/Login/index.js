@@ -24,12 +24,12 @@ export default class Login extends Component {
     try {
       const user = await auth.signInWithEmailAndPassword(username, password);
 
-      if (user && user !== null) {
+      if (user) {
         const token = await auth.currentUser.getIdToken();
 
         if (token) {
           await AsyncStorage.setItem(storageKey.token, JSON.stringify(token));
-          await AsyncStorage.setItem(storageKey.userInfo, userInfo);
+          await AsyncStorage.setItem(storageKey.userInfo, JSON.stringify(user));
           this.props.navigation.navigate("Main");
         }
       }

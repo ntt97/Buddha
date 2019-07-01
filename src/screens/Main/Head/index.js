@@ -3,9 +3,10 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import SettingIcon from "react-native-vector-icons/Feather";
 import HandIcons from "react-native-vector-icons/FontAwesome5";
 
-import MyPrayer from "../MyPrayers";
+import MyPrayers from "../MyPrayers";
 import Subscribed from "../Subscribed";
 import { colors } from "../../../utils";
+
 
 export default class Head extends Component {
   constructor(props) {
@@ -45,28 +46,28 @@ export default class Head extends Component {
       </View>
     );
   }
-  _onRenderPrayActivities(){
-      return(
-        <View style={styles.prayActivityWrapper}>
-          <TouchableOpacity style={styles.dumbActivity}>
-            <HandIcons
-              name="praying-hands"
-              color={colors.whitePrimary}
-              size={18}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.dumbActivity}>
-            <HandIcons name="khanda" color={colors.whitePrimary} size={18} />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.dumbActivity}>
-            <HandIcons
-              name="hands-helping"
-              color={colors.whitePrimary}
-              size={18}
-            />
-          </TouchableOpacity>
-        </View>
-      )
+  _onRenderPrayActivities() {
+    return (
+      <View style={styles.prayActivityWrapper}>
+        <TouchableOpacity style={styles.dumbActivity}>
+          <HandIcons
+            name="praying-hands"
+            color={colors.whitePrimary}
+            size={18}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.dumbActivity}>
+          <HandIcons name="khanda" color={colors.whitePrimary} size={18} />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.dumbActivity}>
+          <HandIcons
+            name="hands-helping"
+            color={colors.whitePrimary}
+            size={18}
+          />
+        </TouchableOpacity>
+      </View>
+    );
   }
   _onRenderHeader() {
     return (
@@ -92,12 +93,43 @@ export default class Head extends Component {
       </View>
     );
   }
+  _onRenderTab() {
+    const {isRenderSubscribed} = this.state
+    return (
+      <View style ={styles.tabWrapper}>
+        <TouchableOpacity 
+        onPress ={()=>this.setState({isRenderSubscribed:false})}
+         style = {[styles.tabStyle,{
+          borderBottomWidth: isRenderSubscribed ? 1 : 2.5,
+          borderBottomColor: isRenderSubscribed ? colors.grayPrimary: colors.bluePrimary
+        }]}>
+          <Text style ={[styles.tabText,{
+            color: isRenderSubscribed ? colors.grayPrimary : colors.bluePrimary
+          }]}>My Prayers</Text>
+        </TouchableOpacity>
+        <TouchableOpacity 
+        onPress ={()=>this.setState({isRenderSubscribed:true})}
+        style = {[styles.tabStyle,{
+          borderBottomWidth: !isRenderSubscribed ? 1 : 2.5,
+          borderBottomColor: !isRenderSubscribed ? colors.grayPrimary: colors.bluePrimary
+        }]}>
+          <Text style ={[styles.tabText,{
+            color: !isRenderSubscribed ? colors.grayPrimary : colors.bluePrimary
+          }]}>Subscribed</Text>
+        </TouchableOpacity>
+        <View />
+      </View>
+    );
+  }
   render() {
+    const {isRenderSubscribed} =  this.state
     return (
       <View style={styles.container}>
         {/* Header */}
         {this._onRenderHeader()}
         {/* Tab */}
+        {this._onRenderTab()}
+        {isRenderSubscribed? <Subscribed /> : <MyPrayers />}
       </View>
     );
   }
@@ -158,5 +190,24 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   weekWrapper: {},
-  streakWrapper: {}
+  streakWrapper: {},
+  tabWrapper:{
+    display:'flex',
+    flexDirection:'row',
+    borderStyle:'solid',
+    height:45,
+    marginTop:30
+  },
+  tabStyle:{
+    width:"50%",
+    borderStyle:'solid',
+    flex:1
+  },
+  tabText:{
+    textAlign:'center',
+    textTransform:'uppercase',
+    fontWeight:'500',
+    fontSize:16,
+    letterSpacing:0.5
+  }
 });

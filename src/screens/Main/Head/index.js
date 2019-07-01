@@ -7,7 +7,6 @@ import MyPrayers from "../MyPrayers";
 import Subscribed from "../Subscribed";
 import { colors } from "../../../utils";
 
-
 export default class Head extends Component {
   constructor(props) {
     super(props);
@@ -76,6 +75,15 @@ export default class Head extends Component {
         {this._onRenderAvatar()}
         {/* Streak Count */}
         {this._onRenderStreakCount()}
+        <View
+          style={{
+            borderRightColor: colors.grayPrimary,
+            borderRightWidth: 1,
+            height: 30,
+            position: "relative",
+            top: 10
+          }}
+        />
         {/* Week Count */}
         {this._onRenderWeekCount()}
         {/* Line | */}
@@ -94,42 +102,94 @@ export default class Head extends Component {
     );
   }
   _onRenderTab() {
-    const {isRenderSubscribed} = this.state
+    const { isRenderSubscribed } = this.state;
     return (
-      <View style ={styles.tabWrapper}>
-        <TouchableOpacity 
-        onPress ={()=>this.setState({isRenderSubscribed:false})}
-         style = {[styles.tabStyle,{
-          borderBottomWidth: isRenderSubscribed ? 1 : 2.5,
-          borderBottomColor: isRenderSubscribed ? colors.grayPrimary: colors.bluePrimary
-        }]}>
-          <Text style ={[styles.tabText,{
-            color: isRenderSubscribed ? colors.grayPrimary : colors.bluePrimary
-          }]}>My Prayers</Text>
+      <View style={styles.tabWrapper}>
+        <TouchableOpacity
+          onPress={() => this.setState({ isRenderSubscribed: false })}
+          style={[
+            styles.tabStyle,
+            {
+              borderBottomWidth: isRenderSubscribed ? 1 : 2.5,
+              borderBottomColor: isRenderSubscribed
+                ? colors.grayPrimary
+                : colors.bluePrimary
+            }
+          ]}
+        >
+          <Text
+            style={[
+              styles.tabText,
+              {
+                color: isRenderSubscribed
+                  ? colors.grayPrimary
+                  : colors.bluePrimary
+              }
+            ]}
+          >
+            My Prayers
+          </Text>
         </TouchableOpacity>
-        <TouchableOpacity 
-        onPress ={()=>this.setState({isRenderSubscribed:true})}
-        style = {[styles.tabStyle,{
-          borderBottomWidth: !isRenderSubscribed ? 1 : 2.5,
-          borderBottomColor: !isRenderSubscribed ? colors.grayPrimary: colors.bluePrimary
-        }]}>
-          <Text style ={[styles.tabText,{
-            color: !isRenderSubscribed ? colors.grayPrimary : colors.bluePrimary
-          }]}>Subscribed</Text>
+
+        <TouchableOpacity
+          onPress={() => this.setState({ isRenderSubscribed: true })}
+          style={[
+            styles.tabStyle,
+            {
+              borderBottomWidth: !isRenderSubscribed ? 1 : 2.5,
+              borderBottomColor: !isRenderSubscribed
+                ? colors.grayPrimary
+                : colors.bluePrimary
+            }
+          ]}
+        >
+          <Text
+            style={[
+              styles.tabText,
+              {
+                color: !isRenderSubscribed
+                  ? colors.grayPrimary
+                  : colors.bluePrimary
+              }
+            ]}
+          >
+            Subscribed
+          </Text>
+          <View
+            style={{
+              width: 25,
+              height: 25,
+              borderRadius: 15,
+              backgroundColor: colors.redPrimary,
+              position: "absolute",
+              top: -10,
+              right: 25
+            }}
+          >
+            <Text
+              style={{
+                textAlign: "center",
+                color: colors.whitePrimary,
+                fontSize: 16
+              }}
+            >
+              7
+            </Text>
+          </View>
         </TouchableOpacity>
         <View />
       </View>
     );
   }
   render() {
-    const {isRenderSubscribed} =  this.state
+    const { isRenderSubscribed } = this.state;
     return (
       <View style={styles.container}>
         {/* Header */}
         {this._onRenderHeader()}
         {/* Tab */}
         {this._onRenderTab()}
-        {isRenderSubscribed? <Subscribed /> : <MyPrayers />}
+        {isRenderSubscribed ? <Subscribed /> : <MyPrayers />}
       </View>
     );
   }
@@ -191,23 +251,23 @@ const styles = StyleSheet.create({
   },
   weekWrapper: {},
   streakWrapper: {},
-  tabWrapper:{
-    display:'flex',
-    flexDirection:'row',
-    borderStyle:'solid',
-    height:45,
-    marginTop:30
+  tabWrapper: {
+    display: "flex",
+    flexDirection: "row",
+    borderStyle: "solid",
+    height: 45,
+    marginTop: 30
   },
-  tabStyle:{
-    width:"50%",
-    borderStyle:'solid',
-    flex:1
+  tabStyle: {
+    width: "50%",
+    borderStyle: "solid",
+    flex: 1
   },
-  tabText:{
-    textAlign:'center',
-    textTransform:'uppercase',
-    fontWeight:'500',
-    fontSize:16,
-    letterSpacing:0.5
+  tabText: {
+    textAlign: "center",
+    textTransform: "uppercase",
+    fontWeight: "500",
+    fontSize: 16,
+    letterSpacing: 0.5
   }
 });
